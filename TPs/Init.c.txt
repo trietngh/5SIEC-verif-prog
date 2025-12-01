@@ -1,0 +1,19 @@
+------------------------------------------------------------------
+          Functions
+------------------------------------------------------------------
+                                                                                            Qed Ergo   KO
+------------------------------------------------------------------
+Function 'InitWithZero'                            Success:  100%
+Properties    6 /    6                                                                      Qed Ergo   KO
+  InitWithZero_ensures_E1                                                                     -     -
+  InitWithZero_loop_assigns                                                                   3     -
+  InitWithZero_assigns                                                                        2     -
+  InitWithZero_loop_variant                                                                   2     -
+  InitWithZero_loop_invariant_I_RANGE_i                                                       2     -
+  InitWithZero_loop_invariant_I_E1                                                            1     -
+------------------------------------------------------------------
+      Success:   100%
+      Total  :     6 properties
+      Valid  :     6
+      Failed :     -
+------------------------------------------------------------------

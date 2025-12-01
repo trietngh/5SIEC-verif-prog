@@ -1,0 +1,23 @@
+@CONSOLE
+@SUFFIX ".txt"
+@ZERO "   -"
+@CHAPTER
+------------------------------------------------------------------
+          %chapter
+------------------------------------------------------------------
+&90:  Qed Ergo   KO
+@PROPERTY
+  %name &90: %qed %ergo %failed
+@FUNCTION
+------------------------------------------------------------------
+Function '%function' &51:Success: %prop%%
+Properties %prop:valid / %prop:total &90:  Qed Ergo   KO
+@TAIL
+------------------------------------------------------------------
+@END
+@TAIL
+      Success:  %prop%%
+      Total  :  %prop:total properties
+      Valid  :  %prop:valid
+      Failed :  %prop:failed
+------------------------------------------------------------------
