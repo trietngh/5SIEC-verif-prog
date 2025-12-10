@@ -33,5 +33,4 @@ On écrit donc un invariant dans le contrat de boucle qui assure que :
 - Avant et après chaque itération, pour k dans [0,i), T1[k]=T2[k] càd tous les éléments déjà passé est copié correctement.
 Donc cela prouve que l'on écrit dans chaque case de 0 à n-1 de T2[] les élements de 0 à n-1 de T1[].
 CQFD
-
 */
