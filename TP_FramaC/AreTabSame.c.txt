@@ -3,8 +3,8 @@
 ------------------------------------------------------------------
                                                                                             Qed Ergo   KO
 ------------------------------------------------------------------
-Function 'AreTabSame'                              Success: 90.0%
-Properties    9 /   10                                                                      Qed Ergo   KO
+Function 'AreTabSame'                              Success:  100%
+Properties   10 /   10                                                                      Qed Ergo   KO
   AreTabSame_SAME_ensures                                                                     -    2    -
   AreTabSame_DIFF_ensures                                                                     1    1    -
   AreTabSame_loop_assigns                                                                     1    -    -
@@ -12,12 +12,12 @@ Properties    9 /   10                                                          
   AreTabSame_loop_variant                                                                     4    -    -
   AreTabSame_loop_invariant_I_RANGE_i                                                         3    -    -
   AreTabSame_loop_invariant_I_SAME                                                            1    2    -
-  AreTabSame_loop_invariant_I_DIFF                                                            1    -    2
+  AreTabSame_loop_invariant_I_DIFF                                                            2    1    -
   AreTabSame_complete_DIFF_SAME                                                               1    -    -
   AreTabSame_disjoint_DIFF_SAME                                                               1    -    -
 ------------------------------------------------------------------
-      Success:  90.0%
+      Success:   100%
       Total  :    10 properties
-      Valid  :     9
-      Failed :     1
+      Valid  :    10
+      Failed :     -
 ------------------------------------------------------------------

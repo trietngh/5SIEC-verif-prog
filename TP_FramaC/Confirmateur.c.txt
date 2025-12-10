@@ -5,20 +5,20 @@
 ------------------------------------------------------------------
 Function 'Conf'                                    Success:  100%
 Properties   14 /   14                                                                      Qed Ergo   KO
-  Conf_OutputSetTo1_ensures_Output                                                            7     -
-  Conf_OutputSetTo1_ensures                                                                   7     -
-  Conf_OutPutSetTo0Input0_ensures                                                             7     -
-  Conf_OutPutSetTo0Input0_ensures_2                                                           7     -
-  Conf_OutPutSetToInput1NotConfirmed_ensures                                                  7     -
-  Conf_OutPutSetToInput1NotConfirmed_ensures_2                                                7     -
-  Conf_OutPutSetTo0Input0_assigns                                                             1     -
-  Conf_OutPutSetToInput1NotConfirmed_assigns                                                  1     -
-  Conf_OutputSetTo1_assigns                                                                   1     -
-  Conf_assigns                                                                                1     -
-  Conf_complete_OutPutSetTo0Input0_OutPutSetToInput1NotConfirmed_OutputSetTo1                 -     -
-  Conf_disjoint_OutPutSetTo0Input0_OutPutSetToInput1NotConfirmed                              1     -
-  Conf_disjoint_OutPutSetTo0Input0_OutputSetTo1                                               1     -
-  Conf_disjoint_OutPutSetToInput1NotConfirmed_OutputSetTo1                                    1     -
+  Conf_OutputSetTo1_ensures_Output                                                            7    -    -
+  Conf_OutputSetTo1_ensures                                                                   7    -    -
+  Conf_OutPutSetTo0Input0_ensures                                                             7    -    -
+  Conf_OutPutSetTo0Input0_ensures_2                                                           7    -    -
+  Conf_OutPutSetToInput1NotConfirmed_ensures                                                  7    -    -
+  Conf_OutPutSetToInput1NotConfirmed_ensures_2                                                7    -    -
+  Conf_OutPutSetTo0Input0_assigns                                                             1    -    -
+  Conf_OutPutSetToInput1NotConfirmed_assigns                                                  1    -    -
+  Conf_OutputSetTo1_assigns                                                                   1    -    -
+  Conf_assigns                                                                                1    -    -
+  Conf_complete_OutPutSetTo0Input0_OutPutSetToInput1NotConfirmed_OutputSetTo1                 -    1    -
+  Conf_disjoint_OutPutSetTo0Input0_OutPutSetToInput1NotConfirmed                              1    -    -
+  Conf_disjoint_OutPutSetTo0Input0_OutputSetTo1                                               1    -    -
+  Conf_disjoint_OutPutSetToInput1NotConfirmed_OutputSetTo1                                    1    -    -
 ------------------------------------------------------------------
       Success:   100%
       Total  :    14 properties
