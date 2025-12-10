@@ -1,0 +1,21 @@
+------------------------------------------------------------------
+          Functions
+------------------------------------------------------------------
+                                                                                            Qed Ergo   KO
+------------------------------------------------------------------
+Function 'Maxn'                                    Success:  100%
+Properties    8 /    8                                                                      Qed Ergo   KO
+  Maxn_ensures                                                                                -    1    -
+  Maxn_ensures_2                                                                              -    1    -
+  Maxn_loop_assigns                                                                           1    -    -
+  Maxn_assigns                                                                                1    -    -
+  Maxn_loop_variant                                                                           4    -    -
+  Maxn_loop_invariant_I_RANGE_i                                                               3    -    -
+  Maxn_loop_invariant_I_MAX                                                                   1    2    -
+  Maxn_loop_invariant_I_MAX_EXIST                                                             1    2    -
+------------------------------------------------------------------
+      Success:   100%
+      Total  :     8 properties
+      Valid  :     8
+      Failed :     -
+------------------------------------------------------------------

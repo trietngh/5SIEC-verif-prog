@@ -1,0 +1,24 @@
+------------------------------------------------------------------
+          Functions
+------------------------------------------------------------------
+                                                                                            Qed Ergo   KO
+------------------------------------------------------------------
+Function 'InitMatWithZero'                         Success:  100%
+Properties   11 /   11                                                                      Qed Ergo   KO
+  InitMatWithZero_ensures                                                                     -    1    -
+  InitMatWithZero_loop_assigns                                                                1    2    -
+  InitMatWithZero_loop_assigns_2                                                              2    1    -
+  InitMatWithZero_assigns                                                                     -    1    -
+  InitMatWithZero_loop_variant                                                                2    -    -
+  InitMatWithZero_loop_variant_2                                                              2    -    -
+  InitMatWithZero_loop_invariant_N_RANGE_i                                                    2    -    -
+  InitMatWithZero_loop_invariant_N_CHECK                                                      1    1    -
+  InitMatWithZero_loop_invariant_M_RANGE_i                                                    2    -    -
+  InitMatWithZero_loop_invariant_M_CHECK                                                      1    1    -
+  InitMatWithZero_loop_invariant_M_LIGNE_COMPLETE                                             -    2    -
+------------------------------------------------------------------
+      Success:   100%
+      Total  :    11 properties
+      Valid  :    11
+      Failed :     -
+------------------------------------------------------------------

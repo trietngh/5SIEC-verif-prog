@@ -7,7 +7,7 @@
 ------------------------------------------------------------------
 &90:  Qed Ergo   KO
 @PROPERTY
-  %name &90: %qed %ergo %failed
+  %name &90: %qed %Alt-Ergo %failed
 @FUNCTION
 ------------------------------------------------------------------
 Function '%function' &51:Success: %prop%%

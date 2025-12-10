@@ -1,0 +1,23 @@
+------------------------------------------------------------------
+          Functions
+------------------------------------------------------------------
+                                                                                            Qed Ergo   KO
+------------------------------------------------------------------
+Function 'Search'                                  Success:  100%
+Properties   10 /   10                                                                      Qed Ergo   KO
+  Search_NotFound_ensures                                                                     -    2    -
+  Search_Found_ensures                                                                        1    1    -
+  Search_loop_assigns                                                                         1    -    -
+  Search_assigns                                                                              4    -    -
+  Search_loop_variant                                                                         2    -    -
+  Search_loop_invariant_I_RANGE_i                                                             2    -    -
+  Search_loop_invariant_I_NOTFOUND                                                            1    1    -
+  Search_loop_invariant_I_FOUND                                                               1    1    -
+  Search_complete_Found_NotFound                                                              1    -    -
+  Search_disjoint_Found_NotFound                                                              1    -    -
+------------------------------------------------------------------
+      Success:   100%
+      Total  :    10 properties
+      Valid  :    10
+      Failed :     -
+------------------------------------------------------------------

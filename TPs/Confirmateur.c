@@ -19,7 +19,7 @@ extern unsigned int ConfTime;
 
 /*@
   @ requires ConfTime >= 1;                 //precondition: ConfTime must be at least 1 at function entry
-  @ assigns S, Cpt;                         //function can only modify these folowing memory spaces ( Global variables Cpt, S)
+  @ assigns S, Cpt;                         //function can only modify these folowing memory spaces (Global variables Cpt, S)
   @ behavior OutputSetTo1:                  //first behavior: case when output S is equal to 1  
   @   assumes E == 1 && Cpt >= ConfTime;    //in the Pre_State, if E equal 1 and Cpt superior or equal to ConfTim
   @   ensures Output: S == 1;               //then, in the Post_State, The function must return S eaqual to 1
@@ -37,9 +37,9 @@ extern unsigned int ConfTime;
   @  assigns S, Cpt;                        //redundant
   @
   @ complete behaviors OutputSetTo1, OutPutSetTo0Input0, OutPutSetToInput1NotConfirmed; //verify that the OR of the three behaviour together is TRUE, the behaviours cover the all possibilities
-  @ disjoint behaviors OutputSetTo1, OutPutSetTo0Input0; //verify that the behaviours don't have conflicts between them
+  @ disjoint behaviors OutputSetTo1, OutPutSetTo0Input0;                                //verify that the behaviours don't have conflicts between them
   @ disjoint behaviors OutPutSetTo0Input0, OutPutSetToInput1NotConfirmed;
-  @ disjoint behaviors OutputSetTo1, OutPutSetToInput1NotConfirmed; //do this for each pair of behaviours
+  @ disjoint behaviors OutputSetTo1, OutPutSetToInput1NotConfirmed;                     //do this for each pair of behaviours
 */
 
 void Conf(void) {
