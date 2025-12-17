@@ -1,0 +1,16 @@
+http://sourceforge.net/projects/robotseevm/develop
+
+frama-c-gui -cpp-command "gcc -C -E -DLINUX -LRobotSeeVM_v0001" RobotSeeVM_v0001/*.c
+
+frama-c -cg graph.dot -cpp-command "gcc -C -E -DLINUX -LRobotSeeVM_v0001" RobotSeeVM_v0001/*.c
+dot -Tsvg -o graph.svg graph.dot
+
+frama-c -scg sgraph.dot -cpp-command "gcc -C -E -DLINUX -LRobotSeeVM_v0001" RobotSeeVM_v0001/*.c
+dot -Tsvg -o sgraph.svg sgraph.dot
+
+frama-c-gui -val -pp-annot -cpp-command "gcc -C -E -DLINUX -LRobotSeeVM_v0001" RobotSeeVM_v0001/*.c
+
+	    
+- patch des malloc
+
+- traiter CallBackGetProgramByte

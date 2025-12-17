@@ -1,0 +1,174 @@
+//---------------------------------------------------------------------------
+//    RobotSee, RobotSeeVM - Written by Eric Gregori ( www.EMGRobotics.com )
+//    Copyright (C) 2010  Eric Gregori
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//---------------------------------------------------------------------------
+//
+// This file must compile on everything from a small 8bit micro, 
+// all the way up to a Linux/Windows system.
+// It's written in C for max portability ( 8bit processors are extremely inneficient at c++ )
+// I also try to use global variables as much as possible to minimize RAM requirements
+// for small embedded systems.  I avoided structures do to packing inneficiencies.
+//
+//---------------------------------------------------------------------------
+#include <stdio.h>
+#include "Keyword.h"
+#include "RobotSeeVM.h"
+
+#ifdef WIN32
+#include "TestAsm.h"
+
+void main( void )
+{
+	unsigned char *pStringFifo;
+	unsigned long *pCallStack;
+	unsigned long *pVarArray;
+
+	char bufStringFifo[STRINGFIFOSIZE];
+	char bufCallStack[CALLSTACKDEPTH*4];
+	char bufVarArray[MAXVARS*4];
+
+	initHardware();
+	initFileSystem();
+//	initDebugger();
+
+	// StartVM( unsigned long*, int CallStackDepth, unsigned char*, int CallStringFIFODepth, unsigned long*, int MaxVars  );
+	// CallStackDepth = depth of the Call Stack 
+	// CallStringFIFODepth = depth of the String FIFO
+	// MaxVars = Max # of Vars
+	// Total RAM used (bytes) = (CallStackDepth*4) + (CallStringFIFODepth*1) + (MaxVars*4);
+
+//	pStringFifo = malloc( STRINGFIFOSIZE );
+//	pCallStack  = malloc( CALLSTACKDEPTH*4 );
+//	pVarArray   = malloc( MAXVARS*4 );
+	pStringFifo = bufStringFifo;
+	pCallStack  = bufCallStack;
+	pVarArray   = bufVarArray;
+
+	StartVM( pCallStack,	CALLSTACKDEPTH, 
+			 pStringFifo,	STRINGFIFOSIZE, 
+			 pVarArray,		MAXVARS  );
+
+	// we should never get here!!!
+}
+
+
+void CallBackConsoleOut( char* data )
+{
+	printf( "%s", data );
+}
+
+void CallBackErrorOut( char* data )
+{
+	printf( "%s", data );
+}
+
+void CallBackErrorCode( ERRORTYPE code )
+{
+	printf( ": 0x%x", code );
+}
+
+void CallBackDebugOut( char* data )
+{
+	printf( "%s", data );
+}
+
+/*@ ensures \result==0 && 0<=*data<256 || \result==ERROR_PROGRAM_FETCH */
+unsigned short CallBackGetProgramByte( unsigned long address, unsigned char* data )
+{
+	if( address > sizeof(program) ) return ERROR_PROGRAM_FETCH;
+
+	*data = program[address]; // Test programs in TestAsm.h
+	return 0;
+}
+
+void CallBackReset( void )
+{
+}
+#endif
+#ifdef LINUX
+#include "TestAsm.h"
+
+void main( void )
+{
+	unsigned char *pStringFifo;
+	unsigned long *pCallStack;
+	unsigned long *pVarArray;
+
+//	char bufStringFifo[STRINGFIFOSIZE];
+//	char bufCallStack[CALLSTACKDEPTH*4];
+//	char bufVarArray[MAXVARS*4];
+
+	
+
+	initHardware();
+	initFileSystem();
+//	initDebugger();
+
+	// StartVM( unsigned long*, int CallStackDepth, unsigned char*, int CallStringFIFODepth, unsigned long*, int MaxVars  );
+	// CallStackDepth = depth of the Call Stack 
+	// CallStringFIFODepth = depth of the String FIFO
+	// MaxVars = Max # of Vars
+	// Total RAM used (bytes) = (CallStackDepth*4) + (CallStringFIFODepth*1) + (MaxVars*4);
+	pStringFifo = malloc( STRINGFIFOSIZE );
+	pCallStack  = malloc( CALLSTACKDEPTH*4 );
+	pVarArray   = malloc( MAXVARS*4 );
+
+//	pStringFifo = bufStringFifo;
+//	pCallStack  = bufCallStack;
+//	pVarArray   = bufVarArray;
+
+	StartVM( pCallStack,	CALLSTACKDEPTH, 
+			 pStringFifo,	STRINGFIFOSIZE, 
+			 pVarArray,		MAXVARS  );
+
+	// we should never get here!!!
+}
+
+
+void CallBackConsoleOut( char* data )
+{
+	printf( "%s", data );
+}
+
+void CallBackErrorOut( char* data )
+{
+	printf( "%s", data );
+}
+
+void CallBackErrorCode( ERRORTYPE code )
+{
+	printf( ": 0x%x", code );
+}
+
+void CallBackDebugOut( char* data )
+{
+	printf( "%s", data );
+}
+
+//ensures \result==0 && 0<=(*data)<256 || \result==ERROR_PROGRAM_FETCH ;
+unsigned short CallBackGetProgramByte( unsigned long address, unsigned char* data )
+{
+	if( address > sizeof(program) ) return ERROR_PROGRAM_FETCH;
+
+	*data = program[address]; // Test programs in TestAsm.h
+	return 0;
+}
+
+void CallBackReset( void )
+{
+}
+#endif
+

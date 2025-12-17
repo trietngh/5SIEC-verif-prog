@@ -1,0 +1,137 @@
+digraph G {
+  ratio=0.500000;
+  "UV DebuggerEOhook (1024)" [color="#C010C0", label="DebuggerEOhook",
+                              style="bold", ];
+  "UV CallBackGetProgramByte (1033)" [color="#C010C0",
+                                      label="CallBackGetProgramByte",
+                                      style="bold", ];
+  "UV sprintf_va_1 (10125)" [color="#C010C0", label="sprintf_va_1",
+                             style="dotted", ];
+  "UV CallBackConsoleOut (1038)" [color="#C010C0",
+                                  label="CallBackConsoleOut", style="bold", ];
+  "UV sprintf_va_2 (10129)" [color="#C010C0", label="sprintf_va_2",
+                             style="dotted", ];
+  "UV CallBackErrorOut (1042)" [color="#C010C0", label="CallBackErrorOut",
+                                style="bold", ];
+  "UV sprintf_va_3 (10133)" [color="#C010C0", label="sprintf_va_3",
+                             style="dotted", ];
+  "UV CallBackDebugOut (1046)" [color="#80D000", label="CallBackDebugOut",
+                                shape=diamond, style="bold", ];
+  "UV CallBackReset (1050)" [color="#00D040", label="CallBackReset",
+                             shape=diamond, style="bold", ];
+  "UV sprintf_va_4 (10139)" [color="#C010C0", label="sprintf_va_4",
+                             style="dotted", ];
+  "UV initHardware (1053)" [color="#8050C0", label="initHardware",
+                            shape=diamond, style="bold", ];
+  "UV sprintf_va_5 (10144)" [color="#C010C0", label="sprintf_va_5",
+                             style="dotted", ];
+  "UV initFileSystem (1056)" [color="#401000", label="initFileSystem",
+                              shape=diamond, style="bold", ];
+  "UV main (6179)" [color="#508088", label="main", shape=diamond,
+                    style="bold", ];
+  "UV printf_va_1 (10148)" [color="#C010C0", label="printf_va_1",
+                            style="dotted", ];
+  "UV printf_va_2 (10151)" [color="#C010C0", label="printf_va_2",
+                            style="dotted", ];
+  "UV printf_va_3 (10154)" [color="#C010C0", label="printf_va_3",
+                            style="dotted", ];
+  "UV printf_va_4 (10157)" [color="#80D000", label="printf_va_4",
+                            style="dotted", ];
+  "UV StartVM (1069)" [color="#C010C0", label="StartVM", shape=diamond,
+                       style="bold", ];
+  "UV initStringFIFO (952)" [color="#C010C0", label="initStringFIFO",
+                             style="bold", ];
+  "UV GetString (957)" [color="#C010C0", label="GetString", style="bold", ];
+  "UV StringPush (960)" [color="#C010C0", label="StringPush", style="bold", ];
+  "UV initCallStack (966)" [color="#C010C0", label="initCallStack",
+                            style="bold", ];
+  "UV Push (971)" [color="#C010C0", label="Push", style="bold", ];
+  "UV Pop (975)" [color="#C010C0", label="Pop", style="bold", ];
+  "UV usleep (3282)" [color="#C010C0", label="usleep", style="dotted", ];
+  "UV Top (979)" [color="#C010C0", label="Top", style="bold", ];
+  "UV abs (3285)" [color="#C010C0", label="abs", style="dotted", ];
+  "UV ResetCallStack (983)" [color="#C010C0", label="ResetCallStack",
+                             style="bold", ];
+  "UV initRAMArray (988)" [color="#C010C0", label="initRAMArray",
+                           style="bold", ];
+  "UV setVar (995)" [color="#C010C0", label="setVar", style="bold", ];
+  "UV getVar (1002)" [color="#C010C0", label="getVar", style="bold", ];
+  "UV CallBackErrorCode (2158)" [color="#C010C0", label="CallBackErrorCode",
+                                 style="bold", ];
+  "UV Operator (1007)" [color="#C010C0", label="Operator", style="bold", ];
+  "UV ChangeState (2160)" [color="#C010C0", label="ChangeState",
+                           style="bold", ];
+  "UV FetchProgram (2163)" [color="#C010C0", label="FetchProgram",
+                            style="bold", ];
+  "UV Keyword (1011)" [color="#C010C0", label="Keyword", style="bold", ];
+  "UV DebugEnable (1015)" [color="#C010C0", label="DebugEnable",
+                           style="bold", ];
+  "UV malloc (5623)" [color="#E0F0A8", label="malloc", shape=diamond,
+                      style="dotted", ];
+  
+  subgraph cluster_1046 { color="#80D000"; label="S 1046"; style="bold"; "UV printf_va_4 (10157)";"UV CallBackDebugOut (1046)";
+     };
+  subgraph cluster_1050 { color="#00D040"; label="S 1050"; style="bold"; "UV CallBackReset (1050)";
+     };
+  subgraph cluster_1053 { color="#8050C0"; label="S 1053"; style="bold"; "UV initHardware (1053)";
+     };
+  subgraph cluster_1056 { color="#401000"; label="S 1056"; style="bold"; "UV initFileSystem (1056)";
+     };
+  subgraph cluster_1069 { color="#C010C0"; label="S 1069"; style="bold"; "UV DebugEnable (1015)";"UV Keyword (1011)";"UV FetchProgram (2163)";"UV ChangeState (2160)";"UV Operator (1007)";"UV CallBackErrorCode (2158)";"UV getVar (1002)";"UV setVar (995)";"UV initRAMArray (988)";"UV ResetCallStack (983)";"UV abs (3285)";"UV Top (979)";"UV usleep (3282)";"UV Pop (975)";"UV Push (971)";"UV initCallStack (966)";"UV StringPush (960)";"UV GetString (957)";"UV initStringFIFO (952)";"UV StartVM (1069)";"UV printf_va_3 (10154)";"UV printf_va_2 (10151)";"UV printf_va_1 (10148)";"UV sprintf_va_5 (10144)";"UV sprintf_va_4 (10139)";"UV sprintf_va_3 (10133)";"UV CallBackErrorOut (1042)";"UV sprintf_va_2 (10129)";"UV CallBackConsoleOut (1038)";"UV sprintf_va_1 (10125)";"UV CallBackGetProgramByte (1033)";"UV DebuggerEOhook (1024)";
+     };
+  subgraph cluster_5623 { color="#E0F0A8"; label="S 5623"; style="bold"; "UV malloc (5623)";
+     };
+  subgraph cluster_6179 { color="#508088"; label="S 6179"; style="bold"; "UV main (6179)";
+     };
+  
+  "UV CallBackConsoleOut (1038)" -> "UV printf_va_1 (10148)" [color="#C010C0",
+                                                              ];
+  "UV CallBackErrorOut (1042)" -> "UV printf_va_2 (10151)" [color="#C010C0", ];
+  "UV CallBackDebugOut (1046)" -> "UV printf_va_4 (10157)" [color="#80D000", ];
+  "UV main (6179)" -> "UV initHardware (1053)" [color="#508088", ];
+  "UV main (6179)" -> "UV initFileSystem (1056)" [color="#508088", ];
+  "UV main (6179)" -> "UV StartVM (1069)" [color="#508088", ];
+  "UV main (6179)" -> "UV malloc (5623)" [color="#508088", ];
+  "UV StartVM (1069)" -> "UV initStringFIFO (952)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV StringPush (960)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV initCallStack (966)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV Push (971)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV Pop (975)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV Top (979)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV ResetCallStack (983)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV initRAMArray (988)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV setVar (995)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV getVar (1002)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV Operator (1007)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV Keyword (1011)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV DebugEnable (1015)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV DebuggerEOhook (1024)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV CallBackErrorOut (1042)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV CallBackErrorCode (2158)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV ChangeState (2160)" [color="#C010C0", ];
+  "UV StartVM (1069)" -> "UV FetchProgram (2163)" [color="#C010C0", ];
+  "UV CallBackErrorCode (2158)" -> "UV printf_va_3 (10154)" [color="#C010C0", ];
+  "UV Operator (1007)" -> "UV Push (971)" [color="#C010C0", ];
+  "UV Operator (1007)" -> "UV Pop (975)" [color="#C010C0", ];
+  "UV Operator (1007)" -> "UV Top (979)" [color="#C010C0", ];
+  "UV Operator (1007)" -> "UV setVar (995)" [color="#C010C0", ];
+  "UV Operator (1007)" -> "UV getVar (1002)" [color="#C010C0", ];
+  "UV FetchProgram (2163)" -> "UV CallBackGetProgramByte (1033)" [color="#C010C0",
+                                                                  ];
+  "UV Keyword (1011)" -> "UV GetString (957)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV Push (971)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV Pop (975)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV Top (979)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV setVar (995)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV getVar (1002)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV CallBackConsoleOut (1038)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV CallBackErrorOut (1042)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV usleep (3282)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV abs (3285)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV sprintf_va_1 (10125)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV sprintf_va_2 (10129)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV sprintf_va_3 (10133)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV sprintf_va_4 (10139)" [color="#C010C0", ];
+  "UV Keyword (1011)" -> "UV sprintf_va_5 (10144)" [color="#C010C0", ];
+  
+  }

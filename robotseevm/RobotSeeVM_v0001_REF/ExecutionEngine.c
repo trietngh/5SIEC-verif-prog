@@ -1,0 +1,194 @@
+//---------------------------------------------------------------------------
+//    RobotSee, RobotSeeVM - Written by Eric Gregori ( www.EMGRobotics.com )
+//    Copyright (C) 2010  Eric Gregori
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//---------------------------------------------------------------------------
+//
+// This file must compile on everything from a small 8bit micro, 
+// all the way up to a Linux/Windows system.
+// It's written in C for max portability ( 8bit processors are extremely inneficient at c++ )
+// I also try to use global variables as much as possible to minimize RAM requirements
+// for small embedded systems.  I avoided structures do to packing inneficiencies.
+//
+//---------------------------------------------------------------------------
+#include "RobotSeeVM.h"
+
+// State Machine
+VMSTATES		VMStates;
+VMSTATES		VMOldStates;
+
+PROGRAMCOUNTER	ProgramCounter;
+unsigned long	LineNumber;
+
+
+void ChangeState( VMSTATES state )
+{
+	VMOldStates = VMStates;
+	VMStates    = state;
+}
+
+unsigned char FetchProgram( ERRORTYPE *ErrVal )
+{
+	unsigned char PipeLine;
+	*ErrVal = CallBackGetProgramByte( ProgramCounter, &PipeLine );
+	++ProgramCounter;
+	return( PipeLine );
+}
+
+void StartVM( unsigned long* pCallStack,  unsigned short CallStackDepth, 
+			  unsigned char* pStringFIFO, unsigned short CallStringFIFODepth, 
+			  unsigned long* pVarArray,   unsigned short MaxVars  )
+{
+	unsigned char	PipeLine;
+	unsigned char	opcode;
+	unsigned long	LongParam;
+	ERRORTYPE		ErrVal;
+
+	initCallStack( pCallStack, CallStackDepth );
+	initStringFIFO( pStringFIFO, CallStringFIFODepth );
+	initRAMArray( pVarArray, MaxVars );
+#if 0
+	ErrVal = readProgramHeader( &Address, CallStackDepth, CallStringFIFODepth, MaxVars );
+	if( ErrVal != 0 )
+	{
+		 // Error
+	}
+#endif
+	VMStates			= RESET;
+	VMOldStates			= RESET;
+	while( 1 )
+	{
+		ErrVal = 0;
+		switch( VMStates )
+		{
+		default:
+		case RESET:
+			CallBackErrorOut( "\nRESET\n" );
+			LongParam			= 0;
+			ChangeState( DECODEOPERAND );
+			ProgramCounter		= 0;
+			LineNumber			= 0;
+			ResetCallStack();
+			break;
+
+		case DECODEOPERAND:
+			// SSOOOOOO where: SS -> 00 = no parameter, 01 = 1 byte parm, 10 = 2 byte parm, 11 = 4 byte parm
+			LongParam	= 0;
+			PipeLine    = FetchProgram( &ErrVal );
+			opcode		= PipeLine & 0x3F;
+			switch( (PipeLine & 0xC0) >> 6 )
+			{
+			case 0:		ChangeState( EXECUTEOPERAND );	break;
+			case 1:		ChangeState( GETBYTEPARAM );	break;
+			case 2:		ChangeState( GETSHORTPARAM1 );	break;
+			case 3:		ChangeState( GETLONGPARAM1 );	break;
+			default:	ChangeState( RESET );			break;
+			}
+			break;
+
+		case GETBYTEPARAM:
+			LongParam = FetchProgram( &ErrVal );
+			ChangeState( EXECUTEOPERAND );
+			break;
+
+		case GETSHORTPARAM1:
+			LongParam = FetchProgram( &ErrVal );
+			ChangeState( GETSHORTPARAM2 );
+			break;
+
+		case GETSHORTPARAM2:
+			LongParam = LongParam << 8;
+			LongParam |= FetchProgram( &ErrVal );
+			ChangeState( EXECUTEOPERAND );
+			break;
+
+		case GETLONGPARAM1:
+			LongParam = FetchProgram( &ErrVal );
+			ChangeState( GETLONGPARAM2 );
+			break;
+
+		case GETLONGPARAM2:
+			LongParam = LongParam << 8;
+			LongParam |= FetchProgram( &ErrVal );
+			ChangeState( GETLONGPARAM3 );
+			break;
+
+		case GETLONGPARAM3:
+			LongParam = LongParam << 8;
+			LongParam |= FetchProgram( &ErrVal );
+			ChangeState( GETLONGPARAM4 );
+			break;
+
+		case GETLONGPARAM4:
+			LongParam = LongParam << 8;
+			LongParam |= FetchProgram( &ErrVal );
+			ChangeState( EXECUTEOPERAND );
+			break;
+
+		// ('J'-0x20)  Jump Always to address specified in parameter
+		// ('?'-0x20)  Jump if stack pop is 0 to address specified in parameter
+		// ('N'-0x20)  Jump if stack pop is NOT 0 to address specified in parameter
+		// ('F'-0x20)  Call keyword specified in parameter ( keyword parameters are on call stack )
+		// ('O'-0x20)  Call operator specified in parameter ( basically same as keyword )
+		// ('D'-0x20)  Push VALUE of Constant on stack
+		// ('V'-0x20)  Push VALUE of variable on stack
+//		// ('R'-0x20)  Push REFERENCE of variable on stack
+		// ('C'-0x20)  Copy top of stack, and push on stack
+		// ('S'-0x20)  Push VALUE on string stack
+		// ('T'-0x20)  Top of stack into variable referernced by parameter
+		// ('P'-0x20)  Pop stack into variable referernced by parameter
+		// ('U'-0x20)  Pop stack, dump data
+		// ('#'-0x20)  noop, used for Line Number when debugging 
+
+		case EXECUTEOPERAND:
+			ErrVal = 0;
+#ifdef DEBUGGER
+			if( DebugEnable() > 0 )
+			{
+				DebuggerEOhook( LineNumber, &ProgramCounter, &opcode, &LongParam );
+			}
+#endif
+			switch( opcode + 0x20 )
+			{
+			case 'J': ProgramCounter = LongParam;									break;
+			case 'S': ErrVal  = StringPush( LongParam );							break;
+			case 'D': ErrVal  = Push( LongParam );									break;
+			case 'C': ErrVal |= Push( Top(&ErrVal) );								break;
+//			case 'R': ErrVal  = Push( LongParam );									break;
+			case 'V': ErrVal  = Push( getVar((unsigned short)LongParam,&ErrVal ) );	break;
+			case 'O': ErrVal  = Operator((unsigned short)LongParam );				break;
+			case 'F': ErrVal  = Keyword((unsigned short)LongParam );				break;
+			case '?': if( Pop(&ErrVal) == 0 ) ProgramCounter = LongParam;			break;
+			case 'N': if( Pop(&ErrVal) != 0 ) ProgramCounter = LongParam;			break;
+			case 'T': ErrVal |= setVar((unsigned short)LongParam, Top(&ErrVal) );	break;
+			case 'P': ErrVal |= setVar((unsigned short)LongParam, Pop(&ErrVal) );	break;
+			case 'U': Pop(&ErrVal);													break;
+			case '#': LineNumber = LongParam;										break;
+			default: ErrVal = ERROR_ILLEGAL_INSTRUCTION;							break;
+			}
+
+			ChangeState( DECODEOPERAND );
+			break;
+		} // switch
+
+		if( ErrVal != 0 )
+		{
+			 // Error
+			CallBackErrorOut( "\n!ERROR! - Execution Engine - " );
+			CallBackErrorCode( ErrVal );
+			ChangeState( RESET );
+		}
+	} // while
+}

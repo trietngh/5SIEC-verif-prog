@@ -1,0 +1,7 @@
+#Thu Jan 20 15:38:19 CET 2011
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.1883860566/PATH/delimiter=;
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.1883860566/PATH/operation=replace
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.1883860566/PATH/value=${Path}
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.1883860566/append=true
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.1883860566/appendContributed=true

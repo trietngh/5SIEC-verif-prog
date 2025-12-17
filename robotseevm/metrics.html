@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC >
+<html>
+<head>
+</head>
+<body>
+<div style="text-align: left;">
+<h1><span style="font-weight: bold;">Metrics</span></h1>
+<h2>Synthetic results</h2>
+<br>
+<span style="font-weight: bold;">Defined function</span> (29):<br>
+
+&nbsp; CallBackConsoleOut  (6 calls); setVar  (10 calls);
+       CallBackErrorOut  (3 calls); initStringFIFO  (1 call);
+       CallBackDebugOut  (0 call); getVar  (8 calls); Push  (23 calls);
+       CallBackReset  (0 call); GetString  (1 call); Pop  (42 calls);
+       initHardware  (1 call); StringPush  (1 call);
+       initFileSystem  (1 call); Top  (4 calls); Keyword  (1 call);
+       initCallStack  (1 call); StartVM  (1 call); main  (0 call);
+       ResetCallStack  (1 call); ChangeState  (15 calls); Operator  (1 call);
+       FetchProgram  (8 calls); DebugEnable  (1 call);
+       DebuggerEOhook  (1 call); CallBackErrorCode  (1 call);
+       malloc  (3 calls); free  (0 call); CallBackGetProgramByte  (1 call);
+       initRAMArray  (1 call); 
+<br>
+<br>
+<span style="font-weight: bold;">Undefined functions</span> (4):<br>
+
+&nbsp; usleep  (1 call); abs  (1 call); sprintf  (5 calls);
+       printf  (4 calls); 
+<br>
+<br>
+<span style="font-weight: bold;">Potential entry points</span> (4):<br>
+
+&nbsp; CallBackDebugOut; CallBackReset; main; free; 
+<br>
+<br>
+<span style="font-weight: bold;">SLOC:</span> (443)<br>
+<span style="font-weight: bold;">Number of if statements:</span> (16)<br>
+<span style="font-weight: bold;">Number of assignments:</span> (110)<br>
+<span style="font-weight: bold;">Number of loops:</span> (1)<br>
+<span style="font-weight: bold;">Number of calls:</span> (148)<br>
+<span style="font-weight: bold;">Number of gotos:</span> (8)<br>
+<span style="font-weight: bold;">Number of pointer access:</span> (17)<br>
+<br>
+<h2>Detailed results</h2>
+<br>
+<h3> frama-c/malloc.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> malloc </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> free </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/StringFifo.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> initStringFIFO </td>
+<td> 0 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> GetString </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> StringPush </td>
+<td> 1 </td>
+<td> 6 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 4 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/RobotSeeVM_Debugger.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> DebugEnable </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> DebuggerEOhook </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/RamVar.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> initRAMArray </td>
+<td> 0 </td>
+<td> 2 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> setVar </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> getVar </td>
+<td> 1 </td>
+<td> 2 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 3 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/ports.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> main </td>
+<td> 0 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 6 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> CallBackConsoleOut </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> CallBackErrorOut </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> CallBackErrorCode </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> CallBackDebugOut </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> CallBackGetProgramByte </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> CallBackReset </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/Operator.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> Operator </td>
+<td> 4 </td>
+<td> 30 </td>
+<td> 0 </td>
+<td> 60 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 5 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/Keyword.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> Keyword </td>
+<td> 0 </td>
+<td> 5 </td>
+<td> 0 </td>
+<td> 30 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/InitHardware.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> initHardware </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> initFileSystem </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/ExecutionEngine.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> ChangeState </td>
+<td> 0 </td>
+<td> 2 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> FetchProgram </td>
+<td> 0 </td>
+<td> 2 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> StartVM </td>
+<td> 4 </td>
+<td> 29 </td>
+<td> 1 </td>
+<td> 47 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 6 </td>
+</tr>
+  </tbody>
+</table>
+<h3> RobotSeeVM_v0001/CallStack.c </h3>
+	<br>
+<table style="width: 252px; height: 81px;" border="1">
+  <tbody>
+    <tr>
+      <th>Function</th>
+      <th>#If stmts<br>
+      <th>#Assignments<br>
+      <th>#Loops<br>
+      <th>#Calls<br>
+      <th>#Gotos<br>
+      <th>#Pointer accesses<br>
+      <th>#Exits<br>
+      <th>Cyclomatic value<br>
+      </th>
+    </tr>
+<tr>
+<td> initCallStack </td>
+<td> 0 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> Push </td>
+<td> 1 </td>
+<td> 4 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> Pop </td>
+<td> 1 </td>
+<td> 4 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> Top </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 3 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> ResetCallStack </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+</tr>
+  </tbody>
+</table>

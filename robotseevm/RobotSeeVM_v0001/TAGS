@@ -1,0 +1,161 @@
+
+assembler.h,705
+#define PARM0	27,1437
+#define PARM1	28,1472
+#define PARM2	29,1507
+#define PARM4	30,1542
+#define FUNC1	48,2406
+#define FUNC2	49,2448
+#define JUMP0	52,2507
+#define JUMP1	53,2549
+#define JUMP2	54,2591
+#define JUMP4	55,2633
+#define DUMP	58,2692
+#define PUSHC1	61,2750
+#define PUSHC2	62,2793
+#define PUSHC4	63,2836
+#define STRING	66,2896
+#define POPV1	69,2956
+#define POPV2	70,2998
+#define POPV4	71,3040
+#define PUSHV1	74,3099
+#define PUSHV2	75,3142
+#define PUSHV4	76,3185
+#define OPER1	79,3245
+#define OPER2	80,3287
+#define OPER4	81,3329
+#define JUMPZ1	84,3388
+#define JUMPZ2	85,3433
+#define JUMPZ4	86,3478
+#define JUMPNZ1	89,3539
+#define JUMPNZ2	90,3583
+#define JUMPNZ4	91,3627
+
+CallStack.c,256
+static unsigned long CallStack;29,1476
+static unsigned short CallStackSize;30,1509
+static unsigned short CallStackIndex;31,1547
+void initCallStack(34,1590
+ERRORTYPE Push(42,1827
+DATATYPE Pop(51,2055
+DATATYPE Top(63,2298
+void ResetCallStack(73,2491
+
+ExecutionEngine.c,216
+VMSTATES		VMStates;29,1480
+VMSTATES		VMOldStates;30,1501
+PROGRAMCOUNTER	ProgramCounter;32,1527
+unsigned long	LineNumber;33,1559
+void ChangeState(36,1590
+unsigned char FetchProgram(42,1683
+void StartVM(50,1873
+
+InitHardware.c,56
+void initHardware(26,1435
+void initFileSystem(30,1470
+
+Keyword.c,32
+unsigned short Keyword(28,1459
+
+Keyword.h,722
+#define VM_VERSION_STRING	28,1462
+#define KEYWORD_VERSION	32,1529
+#define KEYWORD_PRINTS	33,1562
+#define KEYWORD_PRINTVD	34,1594
+#define KEYWORD_PRINTVH	35,1627
+#define KEYWORD_DELAY	36,1660
+#define KEYWORD_ABS	37,1691
+#define KEYWORD_TEST	38,1721
+#define KEYWORD_GETMS	42,1782
+#define KEYWORD_TIME	43,1815
+#define KEYWORD_SOUNDPLAY	44,1847
+#define KEYWORD_SOUNDLOOP	45,1883
+#define KEYWORD_SOUNDSTOP	46,1919
+#define KEYWORD_SRAND	47,1955
+#define KEYWORD_RAND	48,1988
+#define KEYWORD_ATANTO	49,2020
+#define KEYWORD_SQRT	50,2054
+#define KEYWORD_ASIN	51,2086
+#define KEYWORD_ACOS	52,2118
+#define KEYWORD_ATAN	53,2150
+#define KEYWORD_TAN	54,2182
+#define KEYWORD_SIN	55,2214
+#define KEYWORD_COS	56,2246
+
+Operator.c,28
+ERRORTYPE Operator(28,1462
+
+ports.c,449
+void main(33,1542
+void CallBackConsoleOut(68,2533
+void CallBackErrorOut(73,2604
+void CallBackErrorCode(78,2673
+void CallBackDebugOut(83,2751
+unsigned short CallBackGetProgramByte(89,2895
+void CallBackReset(97,3122
+void main(104,3202
+void CallBackConsoleOut(138,4191
+void CallBackErrorOut(143,4262
+void CallBackErrorCode(148,4331
+void CallBackDebugOut(153,4409
+unsigned short CallBackGetProgramByte(162,4606
+void CallBackReset(170,4834
+
+ports.h,374
+typedef unsigned long PROGRAMCOUNTER;31,1495
+#define STRINGFIFOSIZE	33,1536
+#define CALLSTACKDEPTH	34,1564
+#define MAXVARS	35,1592
+#define DEBUGGER	37,1618
+#define EMGSLEEP(38,1661
+typedef unsigned long PROGRAMCOUNTER;45,1739
+#define STRINGFIFOSIZE	47,1780
+#define CALLSTACKDEPTH	48,1808
+#define MAXVARS	49,1836
+#define DEBUGGER	51,1861
+#define EMGSLEEP(52,1903
+
+RamVar.c,159
+static unsigned short MaxVarIndex;28,1462
+static unsigned long  RamVar;29,1498
+void initRAMArray(31,1531
+ERRORTYPE setVar(37,1674
+DATATYPE getVar(44,1863
+
+RobotSeeVM_Debugger.c,64
+unsigned char DebugEnable(31,1519
+void DebuggerEOhook(35,1636
+
+RobotSeeVM.h,680
+#define ROBOTSEEVMH2,21
+#define ERRORTYPE	30,1499
+typedef long DATATYPE;32,1535
+						RESET,75,2924
+						DECODEOPERAND,76,2938
+						GETBYTEPARAM,77,2960
+						GETSHORTPARAM1,78,2981
+						GETSHORTPARAM2,79,3004
+						GETLONGPARAM1,80,3027
+						GETLONGPARAM2,81,3049
+						GETLONGPARAM3,82,3071
+						GETLONGPARAM4,83,3093
+						EXECUTEOPERAND84,3115
+					} VMSTATES;85,3137
+#define ERROR_STRINGFIFO_OVERRUN	88,3159
+#define ERROR_CALLSTACK_OVERRUN	89,3201
+#define ERROR_CALLSTACK_UNDERRUN	90,3243
+#define ERROR_ILLEGAL_OPERATOR	91,3285
+#define ERROR_REFERENCE_OUTOFRANGE	92,3326
+#define ERROR_PROGRAM_FETCH	93,3370
+#define ERROR_ILLEGAL_INSTRUCTION	94,3409
+
+StringFifo.c,212
+unsigned char* StringFifo;29,1477
+unsigned short StringFifoSize;30,1505
+unsigned short StringFifoIndex;31,1537
+void initStringFIFO(33,1572
+unsigned char* GetString(40,1761
+unsigned short StringPush(42,1839
+
+TestAsm.h,42
+const unsigned char program[program3,26
